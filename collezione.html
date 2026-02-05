@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Fée Maraboutée — Collezione SS27</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #FAFAFA;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1B3F8D 0%, #3D5A80 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 3.5rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+        }
+
+        .hero .subtitle {
+            font-weight: 300;
+            font-size: 1.1rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .hero .tagline {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            letter-spacing: 0.1em;
+        }
+
+        /* Section styling */
+        section {
+            padding: 60px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 0.1em;
+        }
+
+        /* Executive Summary */
+        .summary-box {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .summary-box .highlight {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1B3F8D;
+        }
+
+        .summary-box .highlight strong {
+            color: #333;
+        }
+
+        /* Key Actions */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .action-card {
+            background: #f8f8f8;
+            border-radius: 8px;
+            padding: 20px 16px;
+            text-align: center;
+            border-left: 3px solid #1B3F8D;
+        }
+
+        .action-card.must {
+            border-left-color: #C2694F;
+        }
+
+        .action-card.should {
+            border-left-color: #3D5A80;
+        }
+
+        .action-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #1B3F8D;
+            margin-bottom: 8px;
+        }
+
+        .action-text {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .action-priority {
+            margin-top: 12px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        .action-priority.must { color: #C2694F; }
+        .action-priority.should { color: #3D5A80; }
+
+        /* Collection Grid */
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .item-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .item-color {
+            height: 120px;
+            position: relative;
+        }
+
+        .item-number {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .item-trend {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(255,255,255,0.95);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .item-trend.peak { color: #C2694F; }
+        .item-trend.stable { color: #3D5A80; }
+        .item-trend.rising { color: #A39E58; }
+
+        .item-info {
+            padding: 20px;
+        }
+
+        .item-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .item-specs {
+            font-size: 0.7rem;
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .item-specs span {
+            display: block;
+        }
+
+        .item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .item-price {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1B3F8D;
+        }
+
+        .item-tier {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #999;
+            background: #f5f5f5;
+            padding: 4px 10px;
+            border-radius: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #C58D82 0%, #D4B896 100%);
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-link {
+            display: inline-block;
+            background: white;
+            color: #333;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-link:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .collection-grid { grid-template-columns: repeat(2, 1fr); }
+            .actions-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .collection-grid { grid-template-columns: 1fr; }
+            .actions-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>La Fée Maraboutée</h1>
+        <p class="subtitle">Collezione Maglieria SS27</p>
+        <p class="tagline">€69-159 Contemporary | Donne 25-45 | Italia & Francia</p>
+    </div>
+
+    <!-- Executive Summary -->
+    <section>
+        <h2>Executive Summary</h2>
+        <div class="summary-box">
+            <p class="highlight">
+                Il mercato maglieria donna EU vale <strong>€25.8B</strong> con il segmento premium in crescita (<strong>47%</strong> del volume).<br>
+                Il gap <strong>€80-120</strong> tra fast fashion e luxury è l'opportunità.
+            </p>
+
+            <div class="actions-grid">
+                <div class="action-card must">
+                    <div class="action-number">1</div>
+                    <div class="action-text">Focus gauge 16/18 ultraleggero</div>
+                    <div class="action-priority must">Must</div>
+                </div>
+                <div class="action-card must">
+                    <div class="action-number">2</div>
+                    <div class="action-text">Crochet solo geometrico</div>
+                    <div class="action-priority must">Must</div>
+                </div>
+                <div class="action-card must">
+                    <div class="action-number">3</div>
+                    <div class="action-text">Matching set come hero</div>
+                    <div class="action-priority must">Must</div>
+                </div>
+                <div class="action-card should">
+                    <div class="action-number">4</div>
+                    <div class="action-text">Luminous Blue statement</div>
+                    <div class="action-priority should">Should</div>
+                </div>
+                <div class="action-card should">
+                    <div class="action-number">5</div>
+                    <div class="action-text">Price core €99-139</div>
+                    <div class="action-priority should">Should</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection -->
+    <section style="background: white; max-width: 100%; padding: 60px 40px;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2>Collezione 8 Pezzi</h2>
+            <div class="collection-grid">
+
+                <div class="item-card">
+                    <div class="item-color" style="background: #F0EDE5;">
+                        <span class="item-number">1</span>
+                        <span class="item-trend peak">Peak</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Pull Traforato Feather-Light</div>
+                        <div class="item-specs">
+                            <span>Viscosa Ecovero 70% + Cotone 30%</span>
+                            <span>Gauge 16/18 | 120-150 gsm</span>
+                        </div>
+                        <div class="item-footer">
+                            <span class="item-price">€79</span>
+                            <span class="item-tier">Entry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-color" style="background: #D4B896;">
+                        <span class="item-number">2</span>
+                        <span class="item-trend stable">Stable</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Pull Crochet Geometrico</div>
+                        <div class="item-specs">
+                            <span>Cotone organico 100%</span>
+                            <span>Gauge 14/16 | 150-180 gsm</span>
+                        </div>
+                        <div class="item-footer">
+                            <span class="item-price">€99</span>
+                            <span class="item-tier">Core</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-color" style="background: #3D5A80;">
+                        <span class="item-number">3</span>
+                        <span class="item-trend stable">Stable</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Cardigan Fluido Matching Set</div>
+                        <div class="item-specs">
+                            <span>Poly-cotone 65/35</span>
+                            <span>Gauge 18 | 130-160 gsm</span>
+                        </div>
+                        <div class="item-footer">
+                            <span class="item-price">€109</span>
+                            <span class="item-tier">Core</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-color" style="background: #3D5A80;">
+                        <span class="item-number">4</span>
+                        <span class="item-trend stable">Stable</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Top Matching Set</div>
+                        <div class="item-specs">
+                            <span>Poly-cotone 65/35</span>
+                            <span>Gauge 18 | 130-160 gsm</span>
+                        </div>
+                        <div class="item-footer">
+                            <span class="item-price">€69</span>
+                            <span class="item-tier">Entry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-color" style="background: #1B3F8D;">
+                        <span class="item-number">5</span>
+                        <span class="item-trend rising">Rising</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Polo Maglia Jewel Tone</div>
+                        <div class="item-specs">
+                            <span>Cotone Mako 96% + PA 4%</span>
+                            <span>Gauge 14 | 160-190 gsm</span>
+                        </div>
+                        <div class="item-footer">
+                            <span class="item-price">€89</span>
+                            <span class="item-tier">Entry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-color" style="background: #C58D82;">
+                        <span class="item-number">6</span>
+                        <span class="item-trend rising">Rising</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Giacca Maglia Corta</div>
+                        <div class="item-specs">
+                            <span>Viscosa Ecovero 60% + Lino 40%</span>
+                            <span>Gauge 14 | 180-220 gsm</span>
+                        </div>
+                        <div class="item-footer">
+                            <span class="item-price">€159</span>
+                            <span class="item-tier">Premium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-color" style="background: #A39E58;">
+                        <span class="item-number">7</span>
+                        <span class="item-trend peak">Peak</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Gonna Maglia Traforata</div>
+                        <div class="item-specs">
+                            <span>Cotone organico 80% + Viscosa 20%</span>
+                            <span>Gauge 16 | 150-180 gsm</span>
+                        </div>
+                        <div class="item-footer">
+                            <span class="item-price">€99</span>
+                            <span class="item-tier">Core</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-color" style="background: #1B3F8D;">
+                        <span class="item-number">8</span>
+                        <span class="item-trend rising">Rising</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Vest Statement Luminous</div>
+                        <div class="item-specs">
+                            <span>Viscosa premium 80% + Seta 20%</span>
+                            <span>Gauge 16/18 | 160-190 gsm</span>
+                        </div>
+                        <div class="item-footer">
+                            <span class="item-price">€129</span>
+                            <span class="item-tier">Core</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <h2>Palette Interattiva</h2>
+        <a href="https://matteo-stratega.github.io/lafee-palette/" class="cta-link" target="_blank">
+            Esplora i 9 Colori + Ensemble →
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>La Fée Maraboutée — Maglieria SS27</p>
+        <p style="margin-top: 8px; font-size: 0.7rem;">PJPF Fashion Intelligence | Febbraio 2026</p>
+    </footer>
+
+</body>
+</html>
