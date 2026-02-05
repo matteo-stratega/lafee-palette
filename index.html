@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Fée Maraboutée — Palette SS27</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #FAFAFA;
+            color: #333;
+            padding: 60px 40px;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 2.8rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-weight: 300;
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        .color-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .color-swatch {
+            height: 140px;
+            display: flex;
+            align-items: flex-end;
+            padding: 12px;
+        }
+
+        .color-info {
+            padding: 16px 20px;
+        }
+
+        .color-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .color-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #999;
+            letter-spacing: 0.05em;
+        }
+
+        .color-hex {
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .color-role {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .color-role.base { color: #666; }
+        .color-role.core { color: #3D5A80; }
+        .color-role.accent { color: #C2694F; }
+        .color-role.statement { color: #1B3F8D; }
+
+        .color-percentage {
+            font-weight: 500;
+        }
+
+        /* Color Stories Section */
+        .stories {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stories h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 0.1em;
+        }
+
+        .story {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+        }
+
+        .story-colors {
+            display: flex;
+            gap: 4px;
+        }
+
+        .story-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+
+        .story-text {
+            flex: 1;
+        }
+
+        .story-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .story-desc {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        /* Distribution */
+        .distribution {
+            max-width: 900px;
+            margin: 60px auto 0;
+            text-align: center;
+        }
+
+        .distribution h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            letter-spacing: 0.1em;
+        }
+
+        .dist-bar {
+            display: flex;
+            height: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .dist-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .dist-legend {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            font-size: 0.8rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        /* COY Badge */
+        .coy-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .color-swatch {
+            position: relative;
+        }
+
+        @media print {
+            body { padding: 20px; }
+            .color-card:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>La Fée Maraboutée</h1>
+        <p class="subtitle">Maglieria SS27 — Palette Colori</p>
+    </div>
+
+    <div class="palette-grid">
+        <!-- BASE -->
+        <div class="color-card">
+            <div class="color-swatch" style="background: #F0EDE5;">
+            </div>
+            <div class="color-info">
+                <div class="color-name">Cloud White</div>
+                <div class="color-meta">
+                    <span class="color-hex">#F0EDE5</span>
+                    <span class="color-role base">Base</span>
+                    <span class="color-percentage">20%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CORE -->
+        <div class="color-card">
+            <div class="color-swatch" style="background: #C58D82;">
+            </div>
+            <div class="color-info">
+                <div class="color-name">Clay</div>
+                <div class="color-meta">
+                    <span class="color-hex">#C58D82</span>
+                    <span class="color-role core">Core</span>
+                    <span class="color-percentage">15%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-card">
+            <div class="color-swatch" style="background: #A39E58;">
+            </div>
+            <div class="color-info">
+                <div class="color-name">Meadowland Green</div>
+                <div class="color-meta">
+                    <span class="color-hex">#A39E58</span>
+                    <span class="color-role core">Core</span>
+                    <span class="color-percentage">12%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-card">
+            <div class="color-swatch" style="background: #D4B896;">
+            </div>
+            <div class="color-info">
+                <div class="color-name">Safari Sand</div>
+                <div class="color-meta">
+                    <span class="color-hex">#D4B896</span>
+                    <span class="color-role core">Core</span>
+                    <span class="color-percentage">12%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-card">
+            <div class="color-swatch" style="background: #3D5A80;">
+            </div>
+            <div class="color-info">
+                <div class="color-name">Adriatic Blue</div>
+                <div class="color-meta">
+                    <span class="color-hex">#3D5A80</span>
+                    <span class="color-role core">Core</span>
+                    <span class="color-percentage">10%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACCENT -->
+        <div class="color-card">
+            <div class="color-swatch" style="background: #C2694F;">
+            </div>
+            <div class="color-info">
+                <div class="color-name">Terracotta</div>
+                <div class="color-meta">
+                    <span class="color-hex">#C2694F</span>
+                    <span class="color-role accent">Accent</span>
+                    <span class="color-percentage">7%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-card">
+            <div class="color-swatch" style="background: #F36841;">
+            </div>
+            <div class="color-info">
+                <div class="color-name">Energy Orange</div>
+                <div class="color-meta">
+                    <span class="color-hex">#F36841</span>
+                    <span class="color-role accent">Accent</span>
+                    <span class="color-percentage">8%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-card">
+            <div class="color-swatch" style="background: #EFA4C2;">
+            </div>
+            <div class="color-info">
+                <div class="color-name">Pop Pink</div>
+                <div class="color-meta">
+                    <span class="color-hex">#EFA4C2</span>
+                    <span class="color-role accent">Accent</span>
+                    <span class="color-percentage">8%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATEMENT -->
+        <div class="color-card">
+            <div class="color-swatch" style="background: #1B3F8D;">
+                <span class="coy-badge">COY 2027</span>
+            </div>
+            <div class="color-info">
+                <div class="color-name">Luminous Blue</div>
+                <div class="color-meta">
+                    <span class="color-hex">#1B3F8D</span>
+                    <span class="color-role statement">Statement</span>
+                    <span class="color-percentage">8%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stories">
+        <h2>Color Stories</h2>
+
+        <div class="story">
+            <div class="story-colors">
+                <div class="story-dot" style="background: #1B3F8D;"></div>
+                <div class="story-dot" style="background: #A39E58;"></div>
+                <div class="story-dot" style="background: #C58D82;"></div>
+            </div>
+            <div class="story-text">
+                <div class="story-name">WGSN Interconnectedness</div>
+                <div class="story-desc">Luminous Blue + Meadowland Green + Clay — Ponte tra passato e futuro, natura e tecnologia. Per pezzi statement.</div>
+            </div>
+        </div>
+
+        <div class="story">
+            <div class="story-colors">
+                <div class="story-dot" style="background: #D4B896;"></div>
+                <div class="story-dot" style="background: #C2694F;"></div>
+                <div class="story-dot" style="background: #C58D82;"></div>
+            </div>
+            <div class="story-text">
+                <div class="story-name">African Dreams</div>
+                <div class="story-desc">Safari Sand + Terracotta + Clay — Kuki Gallmann, The Ranch, savana. Per coordinate naturali.</div>
+            </div>
+        </div>
+
+        <div class="story">
+            <div class="story-colors">
+                <div class="story-dot" style="background: #F0EDE5;"></div>
+                <div class="story-dot" style="background: #3D5A80;"></div>
+                <div class="story-dot" style="background: #EFA4C2;"></div>
+            </div>
+            <div class="story-text">
+                <div class="story-name">Adriatic Memories</div>
+                <div class="story-desc">Cloud White + Adriatic Blue + Pop Pink — Mare, conchiglie, ricordi. Per matching sets e vacanza.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="distribution">
+        <h2>Distribution Strategy</h2>
+        <div class="dist-bar">
+            <div class="dist-segment" style="background: #F0EDE5; width: 20%; color: #666;">20%</div>
+            <div class="dist-segment" style="background: #C58D82; width: 15%; color: white;">15%</div>
+            <div class="dist-segment" style="background: #A39E58; width: 12%; color: white;">12%</div>
+            <div class="dist-segment" style="background: #D4B896; width: 12%; color: #666;">12%</div>
+            <div class="dist-segment" style="background: #3D5A80; width: 10%; color: white;">10%</div>
+            <div class="dist-segment" style="background: #C2694F; width: 7%; color: white;"></div>
+            <div class="dist-segment" style="background: #F36841; width: 8%; color: white;"></div>
+            <div class="dist-segment" style="background: #EFA4C2; width: 8%; color: #666;"></div>
+            <div class="dist-segment" style="background: #1B3F8D; width: 8%; color: white;"></div>
+        </div>
+        <div class="dist-legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #999;"></div>
+                <span>Base 20%</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #3D5A80;"></div>
+                <span>Core 49%</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #C2694F;"></div>
+                <span>Accent 23%</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #1B3F8D;"></div>
+                <span>Statement 8%</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
