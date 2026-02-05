@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Fée Maraboutée — Collezione SS27</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,35 +19,119 @@
             min-height: 100vh;
         }
 
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            border-bottom: 1px solid #eee;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 56px;
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-link {
+            padding: 8px 20px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link.active {
+            background: #1B3F8D;
+            color: white;
+        }
+
+        .nav-link:not(.active) {
+            color: #666;
+            border: 1px solid #ddd;
+        }
+
+        .nav-link:not(.active):hover {
+            border-color: #1B3F8D;
+            color: #1B3F8D;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1B3F8D 0%, #3D5A80 100%);
             color: white;
-            padding: 80px 40px;
+            padding: 70px 40px;
             text-align: center;
         }
 
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             letter-spacing: 0.15em;
             margin-bottom: 12px;
         }
 
         .hero .subtitle {
             font-weight: 300;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 0.4em;
             text-transform: uppercase;
             opacity: 0.9;
         }
 
         .hero .tagline {
-            margin-top: 20px;
-            font-size: 0.9rem;
+            margin-top: 16px;
+            font-size: 0.85rem;
             opacity: 0.8;
             letter-spacing: 0.1em;
+        }
+
+        /* Insight Bar */
+        .insight-bar {
+            background: #333;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .insight-item {
+            text-align: center;
+        }
+
+        .insight-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #F36841;
+        }
+
+        .insight-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            margin-top: 2px;
         }
 
         /* Section styling */
@@ -57,36 +141,53 @@
             margin: 0 auto;
         }
 
-        section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            font-size: 2rem;
+        .section-header {
             text-align: center;
             margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 2rem;
             letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .section-header .section-tag {
+            display: inline-block;
+            background: #1B3F8D;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         /* Executive Summary */
         .summary-box {
             background: white;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
-            max-width: 800px;
+            border-radius: 16px;
+            padding: 44px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            max-width: 850px;
             margin: 0 auto;
         }
 
         .summary-box .highlight {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             line-height: 1.6;
             text-align: center;
-            margin-bottom: 30px;
-            color: #1B3F8D;
+            margin-bottom: 36px;
+            color: #444;
         }
 
         .summary-box .highlight strong {
-            color: #333;
+            color: #1B3F8D;
+            font-weight: 600;
         }
 
         /* Key Actions */
@@ -98,44 +199,65 @@
         }
 
         .action-card {
-            background: #f8f8f8;
-            border-radius: 8px;
-            padding: 20px 16px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 22px 16px;
             text-align: center;
-            border-left: 3px solid #1B3F8D;
+            border-top: 4px solid #1B3F8D;
+            transition: transform 0.2s ease;
+        }
+
+        .action-card:hover {
+            transform: translateY(-2px);
         }
 
         .action-card.must {
-            border-left-color: #C2694F;
+            border-top-color: #C2694F;
+            background: #FDF8F6;
         }
 
         .action-card.should {
-            border-left-color: #3D5A80;
+            border-top-color: #3D5A80;
+            background: #F6F9FC;
         }
 
         .action-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            font-weight: 500;
             color: #1B3F8D;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
+
+        .action-card.must .action-number { color: #C2694F; }
+        .action-card.should .action-number { color: #3D5A80; }
 
         .action-text {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             line-height: 1.5;
-            color: #555;
-        }
-
-        .action-priority {
-            margin-top: 12px;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            color: #444;
             font-weight: 500;
         }
 
-        .action-priority.must { color: #C2694F; }
-        .action-priority.should { color: #3D5A80; }
+        .action-priority {
+            margin-top: 14px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .action-priority.must {
+            color: white;
+            background: #C2694F;
+        }
+        .action-priority.should {
+            color: white;
+            background: #3D5A80;
+        }
 
         /* Collection Grid */
         .collection-grid {
@@ -146,18 +268,19 @@
 
         .item-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: transform 0.3s ease;
+            box-shadow: 0 6px 28px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .item-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
         }
 
         .item-color {
-            height: 280px;
+            height: 300px;
             position: relative;
             overflow: hidden;
         }
@@ -174,51 +297,62 @@
             top: 12px;
             left: 12px;
             background: white;
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-weight: 600;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
         }
 
         .item-trend {
             position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: rgba(255,255,255,0.95);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.6rem;
+            bottom: 10px;
+            right: 10px;
+            background: white;
+            padding: 5px 12px;
+            border-radius: 14px;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 500;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
-        .item-trend.peak { color: #C2694F; }
-        .item-trend.stable { color: #3D5A80; }
-        .item-trend.rising { color: #A39E58; }
+        .item-trend.peak {
+            color: white;
+            background: #C2694F;
+        }
+        .item-trend.stable {
+            color: white;
+            background: #3D5A80;
+        }
+        .item-trend.rising {
+            color: white;
+            background: #A39E58;
+        }
 
         .item-info {
-            padding: 20px;
+            padding: 22px;
         }
 
         .item-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            margin-bottom: 12px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 14px;
             line-height: 1.3;
         }
 
         .item-specs {
-            font-size: 0.7rem;
-            color: #888;
-            line-height: 1.6;
-            margin-bottom: 12px;
+            font-size: 0.72rem;
+            color: #777;
+            line-height: 1.7;
+            margin-bottom: 16px;
         }
 
         .item-specs span {
@@ -229,13 +363,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 12px;
-            border-top: 1px solid #f0f0f0;
+            padding-top: 14px;
+            border-top: 1px solid #eee;
         }
 
         .item-price {
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-size: 1.3rem;
+            font-weight: 600;
             color: #1B3F8D;
         }
 
@@ -243,45 +377,65 @@
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: #999;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 12px;
+        }
+
+        .item-tier.entry {
+            color: #666;
             background: #f5f5f5;
-            padding: 4px 10px;
-            border-radius: 10px;
+        }
+
+        .item-tier.core {
+            color: #3D5A80;
+            background: #E8F0FE;
+        }
+
+        .item-tier.premium {
+            color: #C2694F;
+            background: #FDF0EC;
         }
 
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, #C58D82 0%, #D4B896 100%);
-            padding: 60px 40px;
+            padding: 50px 40px;
             text-align: center;
             color: white;
         }
 
         .cta-section h2 {
-            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.8rem;
             margin-bottom: 20px;
+            letter-spacing: 0.08em;
         }
 
         .cta-link {
             display: inline-block;
             background: white;
             color: #333;
-            padding: 16px 40px;
+            padding: 14px 36px;
             border-radius: 30px;
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 600;
             letter-spacing: 0.1em;
-            transition: transform 0.3s ease;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
 
         .cta-link:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
 
         /* Footer */
         footer {
-            background: #333;
+            background: #222;
             color: white;
             text-align: center;
             padding: 40px;
@@ -300,30 +454,34 @@
         }
 
         @media (max-width: 600px) {
+            .nav { padding: 0 16px; height: 50px; }
+            .nav-brand { font-size: 0.95rem; }
+            .nav-link { padding: 6px 14px; font-size: 0.65rem; }
             .collection-grid { grid-template-columns: 1fr; }
             .actions-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .hero { padding: 50px 20px; }
             .hero h1 { font-size: 2rem; letter-spacing: 0.08em; }
             .hero .subtitle { font-size: 0.85rem; letter-spacing: 0.2em; }
             .hero .tagline { font-size: 0.75rem; letter-spacing: 0.05em; }
+            .insight-bar { gap: 20px; padding: 16px 20px; }
+            .insight-value { font-size: 1.3rem; }
             section { padding: 40px 16px; }
-            section h2 { font-size: 1.6rem; margin-bottom: 30px; }
-            .summary-box { padding: 24px 16px; }
-            .summary-box .highlight { font-size: 1.2rem; line-height: 1.5; }
+            .section-header h2 { font-size: 1.6rem; }
+            .section-header { margin-bottom: 30px; }
+            .summary-box { padding: 24px 18px; }
+            .summary-box .highlight { font-size: 1.25rem; line-height: 1.5; }
             .action-card { padding: 16px 12px; }
-            .action-number { font-size: 1.6rem; }
-            .action-text { font-size: 0.7rem; }
-            .item-card {
-                min-height: 44px; /* Touch target */
-            }
-            .item-info { padding: 16px; }
+            .action-number { font-size: 1.8rem; }
+            .action-text { font-size: 0.72rem; }
+            .item-card { min-height: 44px; }
+            .item-info { padding: 18px; }
             .item-name { font-size: 1.1rem; }
             .item-specs { font-size: 0.75rem; }
             .cta-section { padding: 40px 20px; }
             .cta-link {
                 padding: 14px 32px;
                 font-size: 0.8rem;
-                min-height: 48px; /* Touch target */
+                min-height: 48px;
                 display: inline-flex;
                 align-items: center;
             }
@@ -334,10 +492,20 @@
             .actions-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 1.7rem; }
             .summary-box .highlight { font-size: 1.1rem; }
+            .nav-brand { display: none; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-brand">La Fée Maraboutée</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Palette</a>
+            <a href="collezione.html" class="nav-link active">Collezione</a>
+        </div>
+    </nav>
 
     <!-- Hero -->
     <div class="hero">
@@ -346,9 +514,32 @@
         <p class="tagline">€69-159 Contemporary | Donne 25-45 | Italia & Francia</p>
     </div>
 
+    <!-- Insight Bar -->
+    <div class="insight-bar">
+        <div class="insight-item">
+            <div class="insight-value">€25.8B</div>
+            <div class="insight-label">Mercato EU Maglieria</div>
+        </div>
+        <div class="insight-item">
+            <div class="insight-value">47%</div>
+            <div class="insight-label">Segmento Premium</div>
+        </div>
+        <div class="insight-item">
+            <div class="insight-value">8</div>
+            <div class="insight-label">Pezzi Collezione</div>
+        </div>
+        <div class="insight-item">
+            <div class="insight-value">€69-159</div>
+            <div class="insight-label">Range Prezzo</div>
+        </div>
+    </div>
+
     <!-- Executive Summary -->
     <section>
-        <h2>Executive Summary</h2>
+        <div class="section-header">
+            <h2>Executive Summary</h2>
+            <span class="section-tag">Market Opportunity</span>
+        </div>
         <div class="summary-box">
             <p class="highlight">
                 Il mercato maglieria donna EU vale <strong>€25.8B</strong> con il segmento premium in crescita (<strong>47%</strong> del volume).<br>
@@ -359,27 +550,27 @@
                 <div class="action-card must">
                     <div class="action-number">1</div>
                     <div class="action-text">Focus gauge 16/18 ultraleggero</div>
-                    <div class="action-priority must">Must</div>
+                    <span class="action-priority must">Must</span>
                 </div>
                 <div class="action-card must">
                     <div class="action-number">2</div>
                     <div class="action-text">Crochet solo geometrico</div>
-                    <div class="action-priority must">Must</div>
+                    <span class="action-priority must">Must</span>
                 </div>
                 <div class="action-card must">
                     <div class="action-number">3</div>
                     <div class="action-text">Matching set come hero</div>
-                    <div class="action-priority must">Must</div>
+                    <span class="action-priority must">Must</span>
                 </div>
                 <div class="action-card should">
                     <div class="action-number">4</div>
                     <div class="action-text">Luminous Blue statement</div>
-                    <div class="action-priority should">Should</div>
+                    <span class="action-priority should">Should</span>
                 </div>
                 <div class="action-card should">
                     <div class="action-number">5</div>
                     <div class="action-text">Price core €99-139</div>
-                    <div class="action-priority should">Should</div>
+                    <span class="action-priority should">Should</span>
                 </div>
             </div>
         </div>
@@ -388,7 +579,10 @@
     <!-- Collection -->
     <section style="background: white; max-width: 100%; padding: 60px 40px;">
         <div style="max-width: 1100px; margin: 0 auto;">
-            <h2>Collezione 8 Pezzi</h2>
+            <div class="section-header">
+                <h2>Collezione 8 Pezzi</h2>
+                <span class="section-tag">Figurini + Specifiche</span>
+            </div>
             <div class="collection-grid">
 
                 <div class="item-card">
@@ -405,7 +599,7 @@
                         </div>
                         <div class="item-footer">
                             <span class="item-price">€79</span>
-                            <span class="item-tier">Entry</span>
+                            <span class="item-tier entry">Entry</span>
                         </div>
                     </div>
                 </div>
@@ -424,7 +618,7 @@
                         </div>
                         <div class="item-footer">
                             <span class="item-price">€99</span>
-                            <span class="item-tier">Core</span>
+                            <span class="item-tier core">Core</span>
                         </div>
                     </div>
                 </div>
@@ -443,7 +637,7 @@
                         </div>
                         <div class="item-footer">
                             <span class="item-price">€178</span>
-                            <span class="item-tier">Core</span>
+                            <span class="item-tier core">Core</span>
                         </div>
                     </div>
                 </div>
@@ -462,7 +656,7 @@
                         </div>
                         <div class="item-footer">
                             <span class="item-price">€89</span>
-                            <span class="item-tier">Entry</span>
+                            <span class="item-tier entry">Entry</span>
                         </div>
                     </div>
                 </div>
@@ -481,7 +675,7 @@
                         </div>
                         <div class="item-footer">
                             <span class="item-price">€159</span>
-                            <span class="item-tier">Premium</span>
+                            <span class="item-tier premium">Premium</span>
                         </div>
                     </div>
                 </div>
@@ -500,7 +694,7 @@
                         </div>
                         <div class="item-footer">
                             <span class="item-price">€99</span>
-                            <span class="item-tier">Core</span>
+                            <span class="item-tier core">Core</span>
                         </div>
                     </div>
                 </div>
@@ -519,7 +713,7 @@
                         </div>
                         <div class="item-footer">
                             <span class="item-price">€129</span>
-                            <span class="item-tier">Core</span>
+                            <span class="item-tier core">Core</span>
                         </div>
                     </div>
                 </div>
@@ -538,7 +732,7 @@
                         </div>
                         <div class="item-footer">
                             <span class="item-price">€129</span>
-                            <span class="item-tier">Core</span>
+                            <span class="item-tier core">Core</span>
                         </div>
                     </div>
                 </div>
@@ -549,9 +743,9 @@
 
     <!-- CTA -->
     <div class="cta-section">
-        <h2>Palette Interattiva</h2>
-        <a href="https://matteo-stratega.github.io/lafee-palette/" class="cta-link" target="_blank">
-            Esplora i 9 Colori + Ensemble →
+        <h2>Esplora la Palette Completa</h2>
+        <a href="index.html" class="cta-link">
+            Vedi 9 Colori + Ensemble →
         </a>
     </div>
 
