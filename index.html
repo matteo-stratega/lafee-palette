@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Fée Maraboutée — SS27 Report</title>
+    <title>La Fée Maraboutée — Palette SS27</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
@@ -43,18 +43,10 @@
             opacity: 0.9;
         }
 
-        .hero .tagline {
-            margin-top: 24px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-style: italic;
-            opacity: 0.85;
-        }
-
         /* Section styling */
         section {
             padding: 60px 40px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -137,6 +129,49 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
+        /* Distribution Bar */
+        .distribution {
+            max-width: 900px;
+            margin: 40px auto 0;
+            text-align: center;
+        }
+
+        .dist-bar {
+            display: flex;
+            height: 36px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .dist-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .dist-legend {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 16px;
+            font-size: 0.75rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+        }
+
         /* Color Stories */
         .stories {
             max-width: 900px;
@@ -181,98 +216,53 @@
             font-weight: 300;
         }
 
-        /* Figurini / Collection Grid */
-        .figurini-grid {
+        /* Ensemble Grid */
+        .ensemble-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
         }
 
-        .figurino-card {
+        .ensemble-card {
             background: white;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-            transition: transform 0.3s ease;
-        }
-
-        .figurino-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-
-        .figurino-card img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            object-position: top;
-        }
-
-        .figurino-info {
-            padding: 16px;
-        }
-
-        .figurino-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-        }
-
-        .figurino-trend {
-            font-size: 0.7rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .figurino-price {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #1B3F8D;
-            margin-top: 8px;
-        }
-
-        /* Distribution Bar */
-        .distribution {
-            max-width: 900px;
-            margin: 40px auto 0;
             text-align: center;
         }
 
-        .dist-bar {
+        .ensemble-colors {
             display: flex;
-            height: 36px;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 100px;
         }
 
-        .dist-segment {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .ensemble-colors > div {
+            flex: 1;
+        }
+
+        .ensemble-info {
+            padding: 16px 12px;
+        }
+
+        .ensemble-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .ensemble-pieces {
+            font-size: 0.7rem;
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .ensemble-occasion {
             font-size: 0.65rem;
+            color: #1B3F8D;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
             font-weight: 500;
-        }
-
-        .dist-legend {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 16px;
-            font-size: 0.75rem;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .legend-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 2px;
         }
 
         /* Footer */
@@ -293,12 +283,12 @@
         /* Responsive */
         @media (max-width: 900px) {
             .palette-grid { grid-template-columns: repeat(2, 1fr); }
-            .figurini-grid { grid-template-columns: repeat(2, 1fr); }
+            .ensemble-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 600px) {
             .palette-grid { grid-template-columns: 1fr; }
-            .figurini-grid { grid-template-columns: 1fr; }
+            .ensemble-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
             .story { flex-direction: column; text-align: center; }
         }
@@ -309,8 +299,7 @@
     <!-- Hero -->
     <div class="hero">
         <h1>La Fée Maraboutée</h1>
-        <p class="subtitle">Maglieria SS27</p>
-        <p class="tagline">Contemporary knitwear — €69-159</p>
+        <p class="subtitle">Palette Maglieria SS27</p>
     </div>
 
     <!-- Palette Section -->
@@ -445,7 +434,7 @@
                 </div>
                 <div class="story-text">
                     <div class="story-name">WGSN Interconnectedness</div>
-                    <div class="story-desc">Luminous Blue + Meadowland Green + Clay — Ponte tra passato e futuro, natura e tecnologia.</div>
+                    <div class="story-desc">Luminous Blue + Meadowland Green + Clay — Ponte tra passato e futuro, natura e tecnologia. Per pezzi statement.</div>
                 </div>
             </div>
             <div class="story">
@@ -456,7 +445,7 @@
                 </div>
                 <div class="story-text">
                     <div class="story-name">African Dreams</div>
-                    <div class="story-desc">Safari Sand + Terracotta + Clay — Kuki Gallmann, The Ranch, savana.</div>
+                    <div class="story-desc">Safari Sand + Terracotta + Clay — Kuki Gallmann, The Ranch, savana. Per coordinate naturali.</div>
                 </div>
             </div>
             <div class="story">
@@ -467,78 +456,69 @@
                 </div>
                 <div class="story-text">
                     <div class="story-name">Adriatic Memories</div>
-                    <div class="story-desc">Cloud White + Adriatic Blue + Pop Pink — Mare, conchiglie, ricordi d'estate.</div>
+                    <div class="story-desc">Cloud White + Adriatic Blue + Pop Pink — Mare, conchiglie, ricordi d'estate. Per matching sets e vacanza.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Collezione / Figurini -->
+    <!-- Ensemble / Styling -->
     <section>
-        <h2>Collezione 8 Pezzi</h2>
-        <div class="figurini-grid">
-            <div class="figurino-card">
-                <img src="Pull-Traforato-Feather-Light.png" alt="Pull Traforato Feather-Light">
-                <div class="figurino-info">
-                    <div class="figurino-name">Pull Traforato Feather-Light</div>
-                    <div class="figurino-trend">Feather-Light (Peak)</div>
-                    <div class="figurino-price">€79</div>
+        <h2>5 Ensemble</h2>
+        <div class="ensemble-grid">
+            <div class="ensemble-card">
+                <div class="ensemble-colors">
+                    <div style="background: #F0EDE5;"></div>
+                    <div style="background: #A39E58;"></div>
+                </div>
+                <div class="ensemble-info">
+                    <div class="ensemble-name">Adriatic Coordinates</div>
+                    <div class="ensemble-pieces">Pull Traforato + Gonna Traforata</div>
+                    <div class="ensemble-occasion">Vacanza · Beach Club</div>
                 </div>
             </div>
-            <div class="figurino-card">
-                <img src="2.-Pull-Crochet-Geometrico.png" alt="Pull Crochet Geometrico">
-                <div class="figurino-info">
-                    <div class="figurino-name">Pull Crochet Geometrico</div>
-                    <div class="figurino-trend">Crochet Evolution</div>
-                    <div class="figurino-price">€99</div>
+            <div class="ensemble-card">
+                <div class="ensemble-colors">
+                    <div style="background: #3D5A80;"></div>
+                    <div style="background: #C58D82;"></div>
+                </div>
+                <div class="ensemble-info">
+                    <div class="ensemble-name">Matching Set Parisienne</div>
+                    <div class="ensemble-pieces">Matching Set (#3 + #4)</div>
+                    <div class="ensemble-occasion">Smart Casual · Ufficio</div>
                 </div>
             </div>
-            <div class="figurino-card">
-                <img src="3.-Cardigan-Fluido-Matching-Set.png" alt="Cardigan Fluido Matching Set">
-                <div class="figurino-info">
-                    <div class="figurino-name">Cardigan Fluido Set</div>
-                    <div class="figurino-trend">Matching Sets</div>
-                    <div class="figurino-price">€109</div>
+            <div class="ensemble-card">
+                <div class="ensemble-colors">
+                    <div style="background: #C58D82;"></div>
+                    <div style="background: #F0EDE5;"></div>
+                </div>
+                <div class="ensemble-info">
+                    <div class="ensemble-name">Safari Professional</div>
+                    <div class="ensemble-pieces">Giacca Maglia + Basic</div>
+                    <div class="ensemble-occasion">Business · Meeting</div>
                 </div>
             </div>
-            <div class="figurino-card">
-                <img src="5.-Polo-Maglia-Jewel-Tone.png" alt="Polo Maglia Jewel Tone">
-                <div class="figurino-info">
-                    <div class="figurino-name">Polo Maglia Jewel Tone</div>
-                    <div class="figurino-trend">Polo Knits (Rising)</div>
-                    <div class="figurino-price">€89</div>
+            <div class="ensemble-card">
+                <div class="ensemble-colors">
+                    <div style="background: #D4B896;"></div>
+                    <div style="background: #C2694F;"></div>
+                </div>
+                <div class="ensemble-info">
+                    <div class="ensemble-name">Crochet Weekend</div>
+                    <div class="ensemble-pieces">Pull Crochet + Gonna Fluida</div>
+                    <div class="ensemble-occasion">Aperitivo · Cena</div>
                 </div>
             </div>
-            <div class="figurino-card">
-                <img src="6.-Giacca-Maglia-Corta.png" alt="Giacca Maglia Corta">
-                <div class="figurino-info">
-                    <div class="figurino-name">Giacca Maglia Corta</div>
-                    <div class="figurino-trend">Knit Jackets</div>
-                    <div class="figurino-price">€159</div>
+            <div class="ensemble-card">
+                <div class="ensemble-colors">
+                    <div style="background: #1B3F8D;"></div>
+                    <div style="background: #F36841;"></div>
                 </div>
-            </div>
-            <div class="figurino-card">
-                <img src="7.-Gonna-Maglia-Traforata.png" alt="Gonna Maglia Traforata">
-                <div class="figurino-info">
-                    <div class="figurino-name">Gonna Maglia Traforata</div>
-                    <div class="figurino-trend">Feather-Light</div>
-                    <div class="figurino-price">€99</div>
-                </div>
-            </div>
-            <div class="figurino-card">
-                <img src="8.-Vest-Statement-Luminous.png" alt="Vest Statement Luminous">
-                <div class="figurino-info">
-                    <div class="figurino-name">Vest Statement</div>
-                    <div class="figurino-trend">Sophisticated Knit</div>
-                    <div class="figurino-price">€129</div>
-                </div>
-            </div>
-            <div class="figurino-card">
-                <img src="1.top_traforato_leggero.png" alt="Top Traforato Leggero">
-                <div class="figurino-info">
-                    <div class="figurino-name">Top Matching Set</div>
-                    <div class="figurino-trend">Matching Sets</div>
-                    <div class="figurino-price">€69</div>
+                <div class="ensemble-info">
+                    <div class="ensemble-name">Luminous Statement</div>
+                    <div class="ensemble-pieces">Polo + Vest Statement</div>
+                    <div class="ensemble-occasion">Weekend · Evento</div>
                 </div>
             </div>
         </div>
@@ -546,7 +526,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>La Fée Maraboutée — Maglieria SS27 Report</p>
+        <p>La Fée Maraboutée — Maglieria SS27</p>
         <p style="margin-top: 8px; font-size: 0.7rem;">PJPF Fashion Intelligence</p>
     </footer>
 
