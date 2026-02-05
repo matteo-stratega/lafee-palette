@@ -293,8 +293,39 @@
 
         @media (max-width: 600px) {
             .collection-grid { grid-template-columns: 1fr; }
+            .actions-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .hero { padding: 50px 20px; }
+            .hero h1 { font-size: 2rem; letter-spacing: 0.08em; }
+            .hero .subtitle { font-size: 0.85rem; letter-spacing: 0.2em; }
+            .hero .tagline { font-size: 0.75rem; letter-spacing: 0.05em; }
+            section { padding: 40px 16px; }
+            section h2 { font-size: 1.6rem; margin-bottom: 30px; }
+            .summary-box { padding: 24px 16px; }
+            .summary-box .highlight { font-size: 1.2rem; line-height: 1.5; }
+            .action-card { padding: 16px 12px; }
+            .action-number { font-size: 1.6rem; }
+            .action-text { font-size: 0.7rem; }
+            .item-card {
+                min-height: 44px; /* Touch target */
+            }
+            .item-info { padding: 16px; }
+            .item-name { font-size: 1.1rem; }
+            .item-specs { font-size: 0.75rem; }
+            .cta-section { padding: 40px 20px; }
+            .cta-link {
+                padding: 14px 32px;
+                font-size: 0.8rem;
+                min-height: 48px; /* Touch target */
+                display: inline-flex;
+                align-items: center;
+            }
+            footer { padding: 30px 16px; }
+        }
+
+        @media (max-width: 400px) {
             .actions-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .summary-box .highlight { font-size: 1.1rem; }
         }
     </style>
 </head>

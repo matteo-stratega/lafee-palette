@@ -289,8 +289,33 @@
         @media (max-width: 600px) {
             .palette-grid { grid-template-columns: 1fr; }
             .ensemble-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
+            .hero { padding: 50px 20px; }
+            .hero h1 { font-size: 2rem; letter-spacing: 0.08em; }
+            .hero .subtitle { font-size: 0.9rem; letter-spacing: 0.2em; }
+            section { padding: 40px 16px; }
+            section h2 { font-size: 1.6rem; margin-bottom: 30px; }
             .story { flex-direction: column; text-align: center; }
+            .dist-legend {
+                flex-wrap: wrap;
+                gap: 12px 20px;
+            }
+            .dist-segment { font-size: 0.55rem; }
+            .color-info { padding: 12px 14px; }
+            .color-name { font-size: 1.1rem; }
+            .color-meta { font-size: 0.75rem; }
+            .story-dot {
+                width: 40px;
+                height: 40px;
+                min-width: 40px; /* Touch target */
+            }
+            .ensemble-info { padding: 14px 10px; }
+            footer { padding: 30px 16px; }
+        }
+
+        @media (max-width: 380px) {
+            .hero h1 { font-size: 1.7rem; }
+            .dist-bar { height: 28px; }
+            .dist-segment { font-size: 0; } /* Hide percentages on very small screens */
         }
     </style>
 </head>
