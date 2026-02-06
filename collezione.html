@@ -292,6 +292,17 @@
             object-position: top;
         }
 
+        /* Watermark overlay */
+        .item-color::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='160'%3E%3Ctext x='130' y='80' font-family='Montserrat,sans-serif' font-size='18' font-weight='600' fill='%23333' fill-opacity='0.13' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 130 80)'%3ETrendJourney%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 2;
+        }
+
         .item-number {
             position: absolute;
             top: 12px;
@@ -307,6 +318,7 @@
             font-size: 1rem;
             font-weight: 600;
             box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+            z-index: 3;
         }
 
         .item-trend {
@@ -321,6 +333,7 @@
             letter-spacing: 0.06em;
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 3;
         }
 
         .item-trend.peak {
@@ -587,7 +600,7 @@
 
                 <div class="item-card">
                     <div class="item-color">
-                        <img src="Pull-Traforato-Feather-Light.png" alt="Pull Traforato Feather-Light">
+                        <img src="Pull-Traforato-Feather-Light.png" alt="Pull Traforato Feather-Light" draggable="false">
                         <span class="item-number">1</span>
                         <span class="item-trend peak">Peak</span>
                     </div>
@@ -606,7 +619,7 @@
 
                 <div class="item-card">
                     <div class="item-color">
-                        <img src="2.-Pull-Crochet-Geometrico.png" alt="Pull Crochet Geometrico">
+                        <img src="2.-Pull-Crochet-Geometrico.png" alt="Pull Crochet Geometrico" draggable="false">
                         <span class="item-number">2</span>
                         <span class="item-trend stable">Stable</span>
                     </div>
@@ -625,7 +638,7 @@
 
                 <div class="item-card">
                     <div class="item-color">
-                        <img src="3.-Cardigan-Fluido-Matching-Set.png" alt="Matching Set">
+                        <img src="3.-Cardigan-Fluido-Matching-Set.png" alt="Matching Set" draggable="false">
                         <span class="item-number">3+4</span>
                         <span class="item-trend stable">Stable</span>
                     </div>
@@ -644,7 +657,7 @@
 
                 <div class="item-card">
                     <div class="item-color">
-                        <img src="5.-Polo-Maglia-Jewel-Tone.png" alt="Polo Maglia Jewel Tone">
+                        <img src="5.-Polo-Maglia-Jewel-Tone.png" alt="Polo Maglia Jewel Tone" draggable="false">
                         <span class="item-number">5</span>
                         <span class="item-trend rising">Rising</span>
                     </div>
@@ -663,7 +676,7 @@
 
                 <div class="item-card">
                     <div class="item-color">
-                        <img src="6-giacca-maglia-corta-new.png" alt="Giacca Maglia Corta">
+                        <img src="6-giacca-maglia-corta-new.png" alt="Giacca Maglia Corta" draggable="false">
                         <span class="item-number">6</span>
                         <span class="item-trend rising">Rising</span>
                     </div>
@@ -682,7 +695,7 @@
 
                 <div class="item-card">
                     <div class="item-color">
-                        <img src="7.-Gonna-Maglia-Traforata.png" alt="Gonna Maglia Traforata">
+                        <img src="7.-Gonna-Maglia-Traforata.png" alt="Gonna Maglia Traforata" draggable="false">
                         <span class="item-number">7</span>
                         <span class="item-trend peak">Peak</span>
                     </div>
@@ -701,7 +714,7 @@
 
                 <div class="item-card">
                     <div class="item-color">
-                        <img src="8.-Vest-Statement-Luminous.png" alt="Vest Statement Luminous">
+                        <img src="8.-Vest-Statement-Luminous.png" alt="Vest Statement Luminous" draggable="false">
                         <span class="item-number">8</span>
                         <span class="item-trend rising">Rising</span>
                     </div>
@@ -720,7 +733,7 @@
 
                 <div class="item-card">
                     <div class="item-color">
-                        <img src="8-vest-statement-luminous-alt.png" alt="Vest Statement Luminous - Opzione B">
+                        <img src="8-vest-statement-luminous-alt.png" alt="Vest Statement Luminous - Opzione B" draggable="false">
                         <span class="item-number" style="background: #1B3F8D; color: white;">8B</span>
                         <span class="item-trend rising">Rising</span>
                     </div>
@@ -754,6 +767,13 @@
         <p>La Fée Maraboutée — Maglieria SS27</p>
         <p style="margin-top: 8px; font-size: 0.7rem;">PJPF Fashion Intelligence | Febbraio 2026</p>
     </footer>
+
+    <!-- Protection: disable right-click and drag on images -->
+    <script>
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('.item-color')) e.preventDefault();
+    });
+    </script>
 
 </body>
 </html>
